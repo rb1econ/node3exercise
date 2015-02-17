@@ -5,6 +5,7 @@ var app = express();
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/javascripts'));
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', function(req, res) {
@@ -17,6 +18,7 @@ app.get('/success', function(req, res){
 
 app.post('/formsubmit', function(req, res){
 		res.redirect('/success');
+		console.log(req.body.email);
 });
 
 var server = app.listen(8298, function() {
